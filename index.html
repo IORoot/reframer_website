@@ -241,8 +241,9 @@
 
         // Stripe integration
         async function handlePurchase(productId) {
-            // Redirect to the Stripe payment link
-            window.location.href = 'https://buy.stripe.com/test_cNidR9feUbqZ7gKbwb9oc01';
+            // Redirect to the Stripe payment link with success URL
+            const successUrl = encodeURIComponent(window.location.origin + '/thank-you.html');
+            window.location.href = `https://buy.stripe.com/test_cNidR9feUbqZ7gKbwb9oc01?success_url=${successUrl}`;
         }
     </script>
 </body>
