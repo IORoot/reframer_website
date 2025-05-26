@@ -114,7 +114,7 @@
                             </div>
                             <div class="pt-4">
                                 <div class="flex justify-between items-center">
-                                    <span class="text-3xl font-bold">$49</span>
+                                    <span class="text-3xl font-bold">£1.00</span>
                                     <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center" onclick="handlePurchase('template-pack')">
                                         <span>Buy Now</span>
                                         <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -240,36 +240,9 @@
         });
 
         // Stripe integration
-        const stripe = Stripe('YOUR_PUBLISHABLE_KEY'); // Replace with your Stripe publishable key
-
         async function handlePurchase(productId) {
-            try {
-                // Here you would typically make an API call to your backend
-                // to create a Stripe Checkout Session
-                const response = await fetch('/create-checkout-session', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        productId: productId
-                    })
-                });
-
-                const session = await response.json();
-
-                // Redirect to Stripe Checkout
-                const result = await stripe.redirectToCheckout({
-                    sessionId: session.id
-                });
-
-                if (result.error) {
-                    alert(result.error.message);
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('Something went wrong. Please try again.');
-            }
+            // Redirect to the Stripe payment link
+            window.location.href = 'https://buy.stripe.com/test_cNidR9feUbqZ7gKbwb9oc01';
         }
     </script>
 </body>
