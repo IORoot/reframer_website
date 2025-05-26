@@ -32,7 +32,6 @@
                     <div class="ml-10 flex items-center space-x-4">
                         <a href="#products" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Products</a>
                         <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Features</a>
-                        <a href="#pricing" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
                     </div>
                 </div>
             </div>
@@ -59,44 +58,72 @@
     <!-- Products Section -->
     <section id="products" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Product Card 1 -->
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Product</h2>
+            <div class="max-w-2xl mx-auto">
+                <!-- Single Product Card -->
                 <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg mb-4"></div>
-                    <h3 class="text-xl font-semibold mb-2">Premium Template Pack</h3>
-                    <p class="text-gray-600 mb-4">Professional templates for your next project</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold">$49</span>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="handlePurchase('template-pack')">
-                            Buy Now
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 2 -->
-                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg mb-4"></div>
-                    <h3 class="text-xl font-semibold mb-2">Digital Asset Bundle</h3>
-                    <p class="text-gray-600 mb-4">Complete collection of digital resources</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold">$99</span>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="handlePurchase('asset-bundle')">
-                            Buy Now
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Card 3 -->
-                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg mb-4"></div>
-                    <h3 class="text-xl font-semibold mb-2">Premium Course</h3>
-                    <p class="text-gray-600 mb-4">Master digital skills with our expert course</p>
-                    <div class="flex justify-between items-center">
-                        <span class="text-2xl font-bold">$149</span>
-                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="handlePurchase('premium-course')">
-                            Buy Now
-                        </button>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Product Image Gallery -->
+                        <div class="space-y-4">
+                            <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg overflow-hidden">
+                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" 
+                                     alt="Digital Product Preview" 
+                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                            </div>
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="aspect-w-1 aspect-h-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=80" 
+                                         alt="Product Detail 1" 
+                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="aspect-w-1 aspect-h-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&auto=format&fit=crop&q=80" 
+                                         alt="Product Detail 2" 
+                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                                <div class="aspect-w-1 aspect-h-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=80" 
+                                         alt="Product Detail 3" 
+                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Product Details -->
+                        <div class="space-y-4">
+                            <h3 class="text-2xl font-semibold">Premium Template Pack</h3>
+                            <p class="text-gray-600">Professional templates designed to elevate your digital presence. Perfect for creators, entrepreneurs, and businesses looking to make a lasting impression.</p>
+                            <div class="space-y-2">
+                                <div class="flex items-center text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>10+ Professional Templates</span>
+                                </div>
+                                <div class="flex items-center text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Fully Customizable</span>
+                                </div>
+                                <div class="flex items-center text-gray-600">
+                                    <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                    </svg>
+                                    <span>Lifetime Updates</span>
+                                </div>
+                            </div>
+                            <div class="pt-4">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-3xl font-bold">$49</span>
+                                    <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center" onclick="handlePurchase('template-pack')">
+                                        <span>Buy Now</span>
+                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -152,7 +179,6 @@
                     <ul class="space-y-2">
                         <li><a href="#products" class="text-gray-400 hover:text-white">Products</a></li>
                         <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
-                        <li><a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a></li>
                     </ul>
                 </div>
                 <div>
