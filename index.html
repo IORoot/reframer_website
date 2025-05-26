@@ -1,1 +1,250 @@
-Hello there
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Products Store</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
+    <!-- Custom styles -->
+    <style>
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <h1 class="text-2xl font-bold gradient-text">DigitalStore</h1>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-4">
+                        <a href="#products" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Products</a>
+                        <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                        <a href="#pricing" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Pricing</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center">
+                <h1 class="text-4xl sm:text-6xl font-bold text-gray-900 mb-8 opacity-0" id="hero-title">
+                    Transform Your Digital Experience
+                </h1>
+                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto opacity-0" id="hero-subtitle">
+                    Discover premium digital products designed to elevate your workflow and boost productivity.
+                </p>
+                <a href="#products" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors opacity-0" id="cta-button">
+                    Explore Products
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Featured Products</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Product Card 1 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg mb-4"></div>
+                    <h3 class="text-xl font-semibold mb-2">Premium Template Pack</h3>
+                    <p class="text-gray-600 mb-4">Professional templates for your next project</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold">$49</span>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="handlePurchase('template-pack')">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg mb-4"></div>
+                    <h3 class="text-xl font-semibold mb-2">Digital Asset Bundle</h3>
+                    <p class="text-gray-600 mb-4">Complete collection of digital resources</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold">$99</span>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="handlePurchase('asset-bundle')">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
+                    <div class="aspect-w-16 aspect-h-9 bg-gray-200 rounded-lg mb-4"></div>
+                    <h3 class="text-xl font-semibold mb-2">Premium Course</h3>
+                    <p class="text-gray-600 mb-4">Master digital skills with our expert course</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-2xl font-bold">$149</span>
+                        <button class="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700 transition-colors" onclick="handlePurchase('premium-course')">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Instant Delivery</h3>
+                    <p class="text-gray-600">Get immediate access to your digital products after purchase</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">Secure Payments</h3>
+                    <p class="text-gray-600">Safe and secure payment processing with Stripe</p>
+                </div>
+                <div class="text-center p-6">
+                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
+                    <p class="text-gray-600">Round-the-clock customer support for all your needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">DigitalStore</h3>
+                    <p class="text-gray-400">Your trusted source for premium digital products</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#products" class="text-gray-400 hover:text-white">Products</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: support@digitalstore.com</li>
+                        <li>Phone: (555) 123-4567</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 DigitalStore. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Initialize GSAP animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero section animations
+        gsap.to("#hero-title", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
+
+        gsap.to("#hero-subtitle", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.3,
+            ease: "power3.out"
+        });
+
+        gsap.to("#cta-button", {
+            opacity: 1,
+            y: 0,
+            duration: 1,
+            delay: 0.6,
+            ease: "power3.out"
+        });
+
+        // Scroll animations for product cards
+        gsap.utils.toArray('.product-card').forEach(card => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top bottom-=100",
+                    toggleActions: "play none none reverse"
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // Stripe integration
+        const stripe = Stripe('YOUR_PUBLISHABLE_KEY'); // Replace with your Stripe publishable key
+
+        async function handlePurchase(productId) {
+            try {
+                // Here you would typically make an API call to your backend
+                // to create a Stripe Checkout Session
+                const response = await fetch('/create-checkout-session', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        productId: productId
+                    })
+                });
+
+                const session = await response.json();
+
+                // Redirect to Stripe Checkout
+                const result = await stripe.redirectToCheckout({
+                    sessionId: session.id
+                });
+
+                if (result.error) {
+                    alert(result.error.message);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong. Please try again.');
+            }
+        }
+    </script>
+</body>
+</html>
