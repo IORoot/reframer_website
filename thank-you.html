@@ -95,17 +95,23 @@
             ease: "power3.out"
         });
 
-        // Log URL parameters in a more readable format
-        const params = new URLSearchParams(window.location.search);
-        console.log('=== URL Parameters ===');
-        if (params.toString()) {
-            for (const [key, value] of params.entries()) {
-                console.log(`${key}: ${value}`);
+        // Check if request came from Stripe
+        document.addEventListener('DOMContentLoaded', () => {
+            const referrer = document.referrer;
+            if (referrer.includes('stripe.com')) {
+                // Create and append the test link
+                const testLink = document.createElement('div');
+                testLink.className = 'mt-8 p-4 bg-blue-50 rounded-lg';
+                testLink.innerHTML = `
+                    <p class="text-blue-800 mb-2">Test Link (Stripe Referral Detected):</p>
+                    <a href="http://testlink.com/testfile.txt" class="text-blue-600 hover:text-blue-800 underline">
+                        http://testlink.com/testfile.txt
+                    </a>
+                `;
+                // Insert after the thank you content
+                document.getElementById('thank-you-content').after(testLink);
             }
-        } else {
-            console.log('No URL parameters found');
-        }
-        console.log('====================');
+        });
     </script>
 </body>
 </html> 
