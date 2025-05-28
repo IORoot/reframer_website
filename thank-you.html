@@ -95,7 +95,17 @@
             ease: "power3.out"
         });
 
-        console.log('URL Parameters:', Object.fromEntries(new URLSearchParams(window.location.search)));
+        // Log URL parameters in a more readable format
+        const params = new URLSearchParams(window.location.search);
+        console.log('=== URL Parameters ===');
+        if (params.toString()) {
+            for (const [key, value] of params.entries()) {
+                console.log(`${key}: ${value}`);
+            }
+        } else {
+            console.log('No URL parameters found');
+        }
+        console.log('====================');
     </script>
 </body>
 </html> 
