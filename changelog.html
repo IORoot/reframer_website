@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Changelog - Reframer</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deepmind-dark': '#0a0a0a',
+                        'deepmind-gray': '#1a1a1a',
+                        'deepmind-blue': '#8ab4f8',
+                        'deepmind-purple': '#c58af9',
+                        'deepmind-text': '#e8eaed',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #e8eaed;
+        }
+        .gradient-text {
+            background: linear-gradient(90deg, #8ab4f8, #c58af9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #8ab4f8, #c58af9);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .section-title {
+            font-size: clamp(2rem, 6vw, 3.5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        .changelog-card {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .changelog-card:hover {
+            border-color: rgba(138, 180, 248, 0.3);
+        }
+        .version-tag {
+            background: linear-gradient(90deg, #8ab4f8, #c58af9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+    <!-- Navigation -->
+    <nav class="fixed w-full bg-deepmind-dark/80 backdrop-blur-md z-50 border-b border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="index.html" class="text-2xl font-bold gradient-text">Reframer</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="index.html#features" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Features</a>
+                        <a href="index.html#use-cases" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Use Cases</a>
+                        <a href="index.html#showcase" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Showcase</a>
+                        <a href="changelog.html" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Changelog</a>
+                        <a href="index.html#pricing" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Pricing</a>
+                        <button onclick="handlePurchase('reframer')" class="bg-deepmind-blue text-deepmind-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-400 transition-colors">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Changelog -->
+    <div class="pt-24 pb-16">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h1 class="section-title font-bold text-center mb-16">Changelog</h1>
+
+            <!-- Version 1.0.0 -->
+            <div class="changelog-card rounded-xl p-8 mb-8">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-2xl font-bold version-tag">v1.0.0</h2>
+                    <span class="text-gray-400">May 2025</span>
+                </div>
+                
+                <div class="space-y-6">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-3">✨ Initial Release</h3>
+                        <p class="text-gray-400 mb-4">The first public release of Reframer, bringing AI-powered video reframing to macOS.</p>
+                        
+                        <h4 class="text-lg font-medium mb-2">Key Features</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                AI-powered subject detection and tracking
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Support for multiple aspect ratios (16:9, 9:16, 1:1, custom)
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Batch processing capabilities
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                GPU-accelerated processing
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h4 class="text-lg font-medium mb-2">Technical Details</h4>
+                        <ul class="space-y-2 text-gray-400">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                macOS 11.0 or later
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Support for Intel and Apple Silicon
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Input formats: MP4, MOV, AVI, MKV
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                                </svg>
+                                Output formats: MP4, MOV (up to 4K)
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-deepmind-gray border-t border-gray-800 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold gradient-text mb-4">Reframer</h3>
+                    <p class="text-gray-400">AI-powered video reframing for creators</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="index.html#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="index.html#use-cases" class="text-gray-400 hover:text-white transition-colors">Use Cases</a></li>
+                        <li><a href="index.html#showcase" class="text-gray-400 hover:text-white transition-colors">Showcase</a></li>
+                        <li><a href="changelog.html" class="text-gray-400 hover:text-white transition-colors">Changelog</a></li>
+                        <li><a href="index.html#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Email: contact@ioroot.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2024 Reframer. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom JavaScript -->
+    <script>
+        async function handlePurchase(productId) {
+            const successUrl = encodeURIComponent(window.location.origin + '/thank-you.html');
+            window.location.href = `https://buy.stripe.com/test_cNidR9feUbqZ7gKbwb9oc01?success_url=${successUrl}`;
+        }
+    </script>
+</body>
+</html> 

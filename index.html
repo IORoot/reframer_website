@@ -3,35 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Products Store</title>
+    <title>Reframer - AI-Powered Video Reframing</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'deepmind-dark': '#0a0a0a',
+                        'deepmind-gray': '#1a1a1a',
+                        'deepmind-blue': '#8ab4f8',
+                        'deepmind-purple': '#c58af9',
+                        'deepmind-text': '#e8eaed',
+                    }
+                }
+            }
+        }
+    </script>
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
-    <!-- Custom styles -->
     <style>
+        body {
+            background-color: #0a0a0a;
+            color: #e8eaed;
+        }
         .gradient-text {
-            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            background: linear-gradient(90deg, #8ab4f8, #c58af9);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        .hero-gradient {
+            background: radial-gradient(circle at center, rgba(138, 180, 248, 0.1) 0%, rgba(197, 138, 249, 0.1) 100%);
+        }
+        .feature-card {
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: rgba(138, 180, 248, 0.3);
+        }
+        .nav-link {
+            position: relative;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -2px;
+            left: 0;
+            background: linear-gradient(90deg, #8ab4f8, #c58af9);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .section-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+        .section-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.5rem);
+            line-height: 1.4;
+            max-width: 48rem;
+        }
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+        .section-padding {
+            padding-top: 8rem;
+            padding-bottom: 8rem;
+        }
+        .section-padding-sm {
+            padding-top: 6rem;
+            padding-bottom: 6rem;
+        }
     </style>
 </head>
-<body class="bg-gray-50">
+<body class="min-h-screen">
     <!-- Navigation -->
-    <nav class="fixed w-full bg-white/80 backdrop-blur-md z-50 shadow-sm">
+    <nav class="fixed w-full bg-deepmind-dark/80 backdrop-blur-md z-50 border-b border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <h1 class="text-2xl font-bold gradient-text">DigitalStore</h1>
+                    <h1 class="text-2xl font-bold gradient-text">Reframer</h1>
                 </div>
                 <div class="hidden md:block">
-                    <div class="ml-10 flex items-center space-x-4">
-                        <a href="#products" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Products</a>
-                        <a href="#features" class="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium">Features</a>
+                    <div class="ml-10 flex items-center space-x-8">
+                        <a href="#features" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Features</a>
+                        <a href="#use-cases" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Use Cases</a>
+                        <a href="#showcase" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Showcase</a>
+                        <a href="changelog.html" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Changelog</a>
+                        <a href="#pricing" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Pricing</a>
+                        <button onclick="handlePurchase('reframer')" class="bg-deepmind-blue text-deepmind-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-400 transition-colors">
+                            Buy Now
+                        </button>
                     </div>
                 </div>
             </div>
@@ -39,158 +117,259 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center">
-                <h1 class="text-4xl sm:text-6xl font-bold text-gray-900 mb-8 opacity-0" id="hero-title">
-                    Transform Your Digital Experience
-                </h1>
-                <p class="text-xl text-gray-600 mb-12 max-w-3xl mx-auto opacity-0" id="hero-subtitle">
-                    Discover premium digital products designed to elevate your workflow and boost productivity.
-                </p>
-                <a href="#products" class="inline-block bg-blue-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-700 transition-colors opacity-0" id="cta-button">
-                    Explore Products
-                </a>
-            </div>
+    <section class="relative hero-section px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div class="absolute inset-0">
+            <img src="src/img/girl_running_hires.jpeg" alt="" class="w-full h-full object-cover">
+            <div class="absolute inset-0 bg-gradient-to-b from-deepmind-dark/20 via-deepmind-dark/60 to-deepmind-dark/80"></div>
         </div>
-    </section>
-
-    <!-- Products Section -->
-    <section id="products" class="py-20 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12">Featured Product</h2>
-            <div class="max-w-2xl mx-auto">
-                <!-- Single Product Card -->
-                <div class="bg-gray-50 rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Product Image Gallery -->
-                        <div class="space-y-4">
-                            <div class="aspect-w-16 aspect-h-9 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg overflow-hidden">
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&auto=format&fit=crop&q=80" 
-                                     alt="Digital Product Preview" 
-                                     class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                            </div>
-                            <div class="grid grid-cols-3 gap-2">
-                                <div class="aspect-w-1 aspect-h-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&auto=format&fit=crop&q=80" 
-                                         alt="Product Detail 1" 
-                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                                </div>
-                                <div class="aspect-w-1 aspect-h-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?w=400&auto=format&fit=crop&q=80" 
-                                         alt="Product Detail 2" 
-                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                                </div>
-                                <div class="aspect-w-1 aspect-h-1 bg-gradient-to-br from-blue-400 to-purple-500 rounded-lg overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&auto=format&fit=crop&q=80" 
-                                         alt="Product Detail 3" 
-                                         class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Product Details -->
-                        <div class="space-y-4">
-                            <h3 class="text-2xl font-semibold">Premium Template Pack</h3>
-                            <p class="text-gray-600">Professional templates designed to elevate your digital presence. Perfect for creators, entrepreneurs, and businesses looking to make a lasting impression.</p>
-                            <div class="space-y-2">
-                                <div class="flex items-center text-gray-600">
-                                    <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>10+ Professional Templates</span>
-                                </div>
-                                <div class="flex items-center text-gray-600">
-                                    <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>Fully Customizable</span>
-                                </div>
-                                <div class="flex items-center text-gray-600">
-                                    <svg class="w-5 h-5 mr-2 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                    </svg>
-                                    <span>Lifetime Updates</span>
-                                </div>
-                            </div>
-                            <div class="pt-4">
-                                <div class="flex justify-between items-center">
-                                    <span class="text-3xl font-bold">£1.00</span>
-                                    <button class="bg-blue-600 text-white px-8 py-3 rounded-lg hover:bg-blue-700 transition-colors flex items-center" onclick="handlePurchase('template-pack')">
-                                        <span>Buy Now</span>
-                                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="hero-gradient absolute inset-0 opacity-50"></div>
+        <div class="max-w-7xl mx-auto relative w-full">
+            <div class="text-center">
+                <h1 class="section-title font-bold mb-8 opacity-0" id="hero-title">
+                    Transform <span class="gradient-text">Aspect Ratios</span> with AI
+                </h1>
+                <p class="section-subtitle text-gray-200 mb-12 mx-auto opacity-0" id="hero-subtitle">
+                    Reframer uses advanced AI to detect and follow the most important content in your videos, delivering intelligently reframed shots in your desired aspect ratio—automatically and effortlessly.
+                </p>
+                <div class="flex justify-center space-x-6 opacity-0" id="hero-buttons">
+                    <button onclick="handlePurchase('reframer')" class="bg-deepmind-blue text-deepmind-dark px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-400 transition-colors">
+                        Buy Now
+                    </button>
+                    <a href="#showcase" class="bg-deepmind-gray text-deepmind-text px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors border border-gray-700">
+                        See It in Action
+                    </a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Features Section -->
-    <section id="features" class="py-20 bg-gray-50">
+    <section id="features" class="section-padding">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-bold text-center mb-12">Why Choose Us</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+            <h2 class="section-title font-bold text-center mb-20">Why Choose Reframer</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+                <div class="feature-card rounded-2xl p-8 opacity-0" id="feature-1">
+                    <div class="w-14 h-14 bg-deepmind-blue/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Instant Delivery</h3>
-                    <p class="text-gray-600">Get immediate access to your digital products after purchase</p>
+                    <h3 class="text-2xl font-semibold mb-4">AI-Powered Subject Detection</h3>
+                    <p class="text-gray-400 text-lg mb-6">Reframer uses cutting-edge machine learning to automatically detect and track key subjects in your videos, ensuring that the most important elements always remain in frame.</p>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="src/img/face_gridlines Large.jpeg" alt="AI face detection example" class="w-full h-auto">
+                    </div>
                 </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path>
+                <div class="feature-card rounded-2xl p-8 opacity-0" id="feature-2">
+                    <div class="w-14 h-14 bg-deepmind-purple/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-deepmind-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">Secure Payments</h3>
-                    <p class="text-gray-600">Safe and secure payment processing with Stripe</p>
+                    <h3 class="text-2xl font-semibold mb-4">Intelligent Smart Framing</h3>
+                    <p class="text-gray-400 text-lg mb-6">Maintain focus on people, objects, or movement while seamlessly converting to your target aspect ratio. Ideal for transforming footage across different platforms without losing context.</p>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="src/img/landscape_lines Large.jpeg" alt="Smart framing example" class="w-full h-auto">
+                    </div>
                 </div>
-                <div class="text-center p-6">
-                    <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="feature-card rounded-2xl p-8 opacity-0" id="feature-3">
+                    <div class="w-14 h-14 bg-deepmind-blue/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold mb-2">24/7 Support</h3>
-                    <p class="text-gray-600">Round-the-clock customer support for all your needs</p>
+                    <h3 class="text-2xl font-semibold mb-4">Efficient Batch Processing</h3>
+                    <p class="text-gray-400 text-lg mb-6">Process multiple videos at once and save hours of manual editing time. Batch rendering preserves the original quality of your footage while applying smart cropping and tracking.</p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <img src="src/img/walking_lines Large.jpeg" alt="Batch processing example 1" class="rounded-xl w-full h-auto">
+                        <img src="src/img/walking_lines2 Large.jpeg" alt="Batch processing example 2" class="rounded-xl w-full h-auto">
+                        <img src="src/img/walking_lines3 Large.jpeg" alt="Batch processing example 3" class="rounded-xl w-full h-auto">
+                        <img src="src/img/girl_lines Large.jpeg" alt="Batch processing example 4" class="rounded-xl w-full h-auto">
+                    </div>
+                </div>
+                <div class="feature-card rounded-2xl p-8 opacity-0" id="feature-4">
+                    <div class="w-14 h-14 bg-deepmind-purple/20 rounded-xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-deepmind-purple" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">Flexible Format Support</h3>
+                    <p class="text-gray-400 text-lg mb-6">Reframer supports exporting to a variety of aspect ratios—16:9, 9:16, 1:1, and custom dimensions. Compatible with all major video formats and codecs for maximum versatility.</p>
+                    <div class="rounded-xl overflow-hidden">
+                        <img src="src/img/walking_lines3 Large.jpeg" alt="Format conversion example" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases Section -->
+    <section id="use-cases" class="section-padding bg-deepmind-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title font-bold text-center mb-20">Perfect for Every Creator</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="feature-card rounded-2xl p-8">
+                    <div class="mb-8 rounded-xl overflow-hidden">
+                        <img src="src/img/girl_lines Large.jpeg" alt="Content creator example" class="w-full h-auto">
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">For Content Creators</h3>
+                    <ul class="space-y-3 text-gray-400 text-lg">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Convert horizontal (landscape) videos to vertical (portrait) for TikTok, Instagram Reels, or YouTube Shorts
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Generate platform-specific versions from a single source video
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Keep subjects centered and engaging throughout the clip
+                        </li>
+                    </ul>
+                </div>
+                <div class="feature-card rounded-2xl p-8">
+                    <div class="mb-8 rounded-xl overflow-hidden">
+                        <img src="src/img/landscape_gridlines.jpeg" alt="Business use case example" class="w-full h-auto">
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-4">For Businesses</h3>
+                    <ul class="space-y-3 text-gray-400 text-lg">
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Repurpose existing video content for new channels or campaigns
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Standardize aspect ratios for branding consistency
+                        </li>
+                        <li class="flex items-center">
+                            <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Highlight speakers or products in webinars, training materials, and presentations
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Showcase Section -->
+    <section id="showcase" class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title font-bold text-center mb-20">See Reframer in Action</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="feature-card rounded-2xl p-8">
+                    <div class="aspect-w-16 aspect-h-9 rounded-xl overflow-hidden mb-6 bg-deepmind-gray">
+                        <iframe 
+                            class="w-full h-96"
+                            src="https://www.youtube.com/embed/MPbL4X79Ls0" 
+                            title="Reframer Demo Video"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <div class="text-center">
+                        <h3 class="text-2xl font-semibold mb-4">Watch Reframer Transform Your Videos</h3>
+                        <p class="text-gray-400 text-lg mb-6">See how Reframer's AI automatically detects and tracks subjects, creating perfectly framed shots in any aspect ratio.</p>
+                        <button onclick="handlePurchase('reframer')" class="text-deepmind-blue hover:text-blue-400 font-medium">
+                            Try It Now →
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="section-padding bg-deepmind-gray">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="section-title font-bold mb-6">Simple, Transparent Pricing</h2>
+                <p class="section-subtitle text-gray-400 mx-auto">Get Started for the Price of a Coffee</p>
+            </div>
+            <div class="max-w-lg mx-auto">
+                <div class="feature-card rounded-2xl p-8">
+                    <div class="text-center">
+                        <h3 class="text-2xl font-bold mb-4">Reframer Pro</h3>
+                        <div class="text-5xl font-bold mb-6">£4</div>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-lg">
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Unlimited usage
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Access to all features from the current major version
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Full batch processing capabilities
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            No hidden fees. One-time payment. Yours to use.
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <button onclick="handlePurchase('reframer')" class="w-full bg-deepmind-blue text-deepmind-dark px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-400 transition-colors">
+                            Buy Now
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-12">
+    <footer class="bg-deepmind-gray border-t border-gray-800 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div>
-                    <h3 class="text-xl font-bold mb-4">DigitalStore</h3>
-                    <p class="text-gray-400">Your trusted source for premium digital products</p>
+                    <h3 class="text-xl font-bold gradient-text mb-4">Reframer</h3>
+                    <p class="text-gray-400">AI-powered video reframing for creators</p>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="#products" class="text-gray-400 hover:text-white">Products</a></li>
-                        <li><a href="#features" class="text-gray-400 hover:text-white">Features</a></li>
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
+                        <li><a href="#use-cases" class="text-gray-400 hover:text-white transition-colors">Use Cases</a></li>
+                        <li><a href="#showcase" class="text-gray-400 hover:text-white transition-colors">Showcase</a></li>
+                        <li><a href="changelog.html" class="text-gray-400 hover:text-white transition-colors">Changelog</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Contact</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li>Email: support@digitalstore.com</li>
-                        <li>Phone: (555) 123-4567</li>
+                        <li>Email: contact@ioroot.com</li>
                     </ul>
                 </div>
             </div>
             <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 DigitalStore. All rights reserved.</p>
+                <p>&copy; 2024 Reframer. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -216,7 +395,7 @@
             ease: "power3.out"
         });
 
-        gsap.to("#cta-button", {
+        gsap.to("#hero-buttons", {
             opacity: 1,
             y: 0,
             duration: 1,
@@ -224,18 +403,27 @@
             ease: "power3.out"
         });
 
-        // Scroll animations for product cards
-        gsap.utils.toArray('.product-card').forEach(card => {
-            gsap.from(card, {
+        // Feature cards animation - Updated
+        const featureCards = gsap.utils.toArray('.feature-card');
+        featureCards.forEach((card, index) => {
+            // First, set initial state
+            gsap.set(card, {
+                opacity: 0,
+                y: 20
+            });
+
+            // Then create the animation
+            gsap.to(card, {
+                opacity: 1,
+                y: 0,
+                duration: 0.2,
+                delay: index * 0.05,
+                ease: "power1.out",
                 scrollTrigger: {
                     trigger: card,
                     start: "top bottom-=100",
                     toggleActions: "play none none reverse"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 1,
-                ease: "power3.out"
+                }
             });
         });
 
