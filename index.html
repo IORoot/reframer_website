@@ -90,6 +90,9 @@
             padding-top: 6rem;
             padding-bottom: 6rem;
         }
+        .logo-white {
+            filter: brightness(0) invert(1);
+        }
     </style>
 </head>
 <body class="min-h-screen">
@@ -98,7 +101,13 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <h1 class="text-2xl font-bold gradient-text">Reframer</h1>
+                    <div class="flex items-center space-x-4">
+                        <img src="src/svg/RF-1.svg" alt="Reframer Logo" class="h-16 w-16 logo-white">
+                        <div class="flex flex-col -space-y-1">
+                            <h1 class="text-2xl font-bold gradient-text">Reframer</h1>
+                            <span class="text-xs text-gray-400">v1.0.0</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
@@ -196,7 +205,7 @@
                         </svg>
                     </div>
                     <h3 class="text-2xl font-semibold mb-4">Flexible Format Support</h3>
-                    <p class="text-gray-400 text-lg mb-6">Reframer supports exporting to a variety of aspect ratios—16:9, 9:16, 1:1, and custom dimensions. Compatible with all major video formats and codecs for maximum versatility.</p>
+                    <p class="text-gray-400 text-lg mb-6">Reframer supports exporting to a variety of aspect ratios—16:9, 9:16, 1:1, and custom dimensions. Compatible with major video formats including MP4 (H.264, H.265), MOV, and more for maximum versatility.</p>
                     <div class="rounded-xl overflow-hidden">
                         <img src="src/img/walking_lines3 Large.jpeg" alt="Format conversion example" class="w-full h-auto">
                     </div>
@@ -298,12 +307,65 @@
     <section id="pricing" class="section-padding bg-deepmind-gray">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-20">
-                <h2 class="section-title font-bold mb-6">Simple, Transparent Pricing</h2>
-                <p class="section-subtitle text-gray-400 mx-auto">Get Started for the Price of a Coffee</p>
+                <h2 class="section-title font-bold mb-6">Choose Your Version</h2>
+                <p class="section-subtitle text-gray-400 mx-auto">Select the version that best fits your needs</p>
             </div>
-            <div class="max-w-lg mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Free CLI Version -->
                 <div class="feature-card rounded-2xl p-8">
                     <div class="text-center">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-deepmind-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <!-- Terminal Icon -->
+                                <rect x="2" y="3" width="20" height="18" rx="2" stroke-width="2"/>
+                                <path d="M6 9l4 4-4 4M14 13h4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold mb-4">Reframer CLI</h3>
+                        <div class="text-5xl font-bold mb-6">Free</div>
+                    </div>
+                    <ul class="space-y-4 mb-8 text-lg">
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Command-line interface
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            All core reframing features
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Perfect for automation
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            Open source
+                        </li>
+                    </ul>
+                    <div class="text-center">
+                        <a href="https://github.com/IORoot/reframer" target="_blank" class="w-full bg-deepmind-gray text-deepmind-text px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors border border-gray-700 inline-block">
+                            Download CLI
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Pro GUI Version -->
+                <div class="feature-card rounded-2xl p-8">
+                    <div class="text-center">
+                        <div class="flex justify-center mb-4">
+                            <svg class="w-12 h-12 text-deepmind-blue" viewBox="0 0 24 24" fill="currentColor">
+                                <!-- Apple Logo -->
+                                <path d="M17.05 20.28c-.98.95-2.05.88-3.08.41-1.09-.47-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.41C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.19 2.31-.89 3.51-.84 1.54.07 2.7.61 3.44 1.57-3.14 1.88-2.29 5.13.22 6.41-.65 1.29-1.52 2.58-2.25 4.03zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+                            </svg>
+                        </div>
                         <h3 class="text-2xl font-bold mb-4">Reframer Pro</h3>
                         <div class="text-5xl font-bold mb-6">£4</div>
                     </div>
@@ -312,25 +374,25 @@
                             <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            Unlimited usage
+                            MacOS GUI
                         </li>
                         <li class="flex items-center text-gray-300">
                             <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            Access to all features from the current major version
+                            All core reframing features
                         </li>
                         <li class="flex items-center text-gray-300">
                             <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            Full batch processing capabilities
+                            Easy to use interface
                         </li>
                         <li class="flex items-center text-gray-300">
                             <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            No hidden fees. One-time payment. Yours to use.
+                            One-time payment
                         </li>
                     </ul>
                     <div class="text-center">
@@ -343,6 +405,94 @@
         </div>
     </section>
 
+    <!-- Technical Details Section -->
+    <section class="section-padding">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="section-title font-bold mb-6">Technical Details</h2>
+                <p class="section-subtitle text-gray-400 mx-auto">Powered by cutting-edge AI and advanced video processing</p>
+            </div>
+            <div class="max-w-3xl mx-auto">
+                <div class="feature-card rounded-2xl p-8">
+                    <ul class="space-y-8">
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mr-4 text-deepmind-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">YOLO v11 AI Object Tracking</h3>
+                                <p class="text-gray-400">Powered by the latest <a href="https://docs.ultralytics.com/" target="_blank" class="text-deepmind-blue hover:text-blue-400">YOLO v11 AI</a> model, Reframer provides state-of-the-art object detection and tracking. This advanced AI system can identify and follow multiple objects in real-time, ensuring your subjects stay perfectly framed throughout the video.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mr-4 text-deepmind-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Video Smoothing</h3>
+                                <p class="text-gray-400">Our advanced smoothing algorithm analyzes camera movement and subject motion to create fluid, professional-looking transitions. This eliminates jerky movements and ensures your reframed videos maintain cinematic quality, even with rapid subject movement or shaky footage.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mr-4 text-deepmind-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Multi-threaded Processing</h3>
+                                <p class="text-gray-400">Reframer leverages multi-threading technology to process videos efficiently across all available CPU cores. This parallel processing capability significantly reduces rendering times, allowing you to handle multiple videos simultaneously without compromising quality.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mr-4 text-deepmind-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Flexible Aspect Ratio Conversion</h3>
+                                <p class="text-gray-400">Convert your videos to any aspect ratio with customizable weights and framing preferences. Whether you need 16:9 for YouTube, 9:16 for TikTok, or custom dimensions for specific platforms, Reframer handles the conversion while maintaining focus on your subjects.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mr-4 text-deepmind-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Recursive Batch Processing</h3>
+                                <p class="text-gray-400">Process entire folders and subfolders of videos with a single click. Reframer automatically detects and processes all supported video files, maintaining your specified settings and preferences throughout the batch. Perfect for content creators managing multiple projects.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mr-4 text-deepmind-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Multi-object Tracking</h3>
+                                <p class="text-gray-400">Track multiple subjects simultaneously with intelligent framing that considers the average position between objects. This feature is ideal for group shots, sports events, or any scenario where multiple subjects need to be kept in frame.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mr-4 text-deepmind-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Secondary Face Detection</h3>
+                                <p class="text-gray-400">Enhance tracking accuracy with our secondary face detection system. This additional layer of AI processing ensures faces remain properly framed, even in complex scenes with multiple subjects or challenging lighting conditions.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <svg class="w-6 h-6 mr-4 text-deepmind-blue mt-1 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                            </svg>
+                            <div>
+                                <h3 class="text-xl font-semibold mb-2">Debugging & Help System</h3>
+                                <p class="text-gray-400">Access a comprehensive debugging window with detailed processing information and real-time feedback. The built-in help system provides context-aware assistance and troubleshooting guides to help you achieve the best results with your videos.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="bg-deepmind-gray border-t border-gray-800 py-16">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -350,6 +500,7 @@
                 <div>
                     <h3 class="text-xl font-bold gradient-text mb-4">Reframer</h3>
                     <p class="text-gray-400">AI-powered video reframing for creators</p>
+                    <p class="text-gray-400 mt-2">Domain: rf-1.com</p>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
@@ -362,9 +513,9 @@
                     </ul>
                 </div>
                 <div>
-                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <h4 class="text-lg font-semibold mb-4">Contact & Support</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li>Email: contact@ioroot.com</li>
+                        <li><a href="https://github.com/IORoot/reframer/issues" target="_blank" class="hover:text-white transition-colors">GitHub Issues</a></li>
                     </ul>
                 </div>
             </div>
@@ -431,7 +582,7 @@
         async function handlePurchase(productId) {
             // Redirect to the Stripe payment link with success URL
             const successUrl = encodeURIComponent(window.location.origin + '/thank-you.html');
-            window.location.href = `https://buy.stripe.com/test_cNidR9feUbqZ7gKbwb9oc01?success_url=${successUrl}`;
+            window.location.href = `https://buy.stripe.com/14AfZhc2I66F9oS0Rx9oc04?success_url=${successUrl}`;
         }
     </script>
 </body>
