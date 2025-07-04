@@ -24,8 +24,7 @@
     <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <!-- Stripe -->
-    <script src="https://js.stripe.com/v3/"></script>
+
     <style>
         body {
             background-color: #0a0a0a;
@@ -116,9 +115,9 @@
                         <a href="#showcase" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Showcase</a>
                         <a href="changelog.html" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Changelog</a>
                         <a href="#pricing" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Pricing</a>
-                        <button onclick="handlePurchase('reframer')" class="bg-deepmind-blue text-deepmind-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-400 transition-colors">
-                            Buy Now
-                        </button>
+                        <a href="https://londonparkour.synology.me:5443/1_reframer/v1.0.0_RC1/Reframe-1.0.0-RC1-arm64.dmg" target="_blank" class="bg-deepmind-blue text-deepmind-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-400 transition-colors">
+                            Download BETA
+                        </a>
                     </div>
                 </div>
             </div>
@@ -148,9 +147,9 @@
                     Reframer is a powerful desktop application that uses advanced AI to detect and follow the most important content in your videos, delivering intelligently reframed shots in your desired aspect ratio—all processed locally on your computer.
                 </p>
                 <div class="flex justify-center space-x-6 opacity-0" id="hero-buttons">
-                    <button onclick="handlePurchase('reframer')" class="bg-deepmind-blue text-deepmind-dark px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-400 transition-colors">
-                        Buy Now
-                    </button>
+                    <a href="https://londonparkour.synology.me:5443/1_reframer/v1.0.0_RC1/Reframe-1.0.0-RC1-arm64.dmg" target="_blank" class="bg-deepmind-blue text-deepmind-dark px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-400 transition-colors">
+                        Download BETA
+                    </a>
                     <a href="#showcase" class="bg-deepmind-gray text-deepmind-text px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-800 transition-colors border border-gray-700">
                         See It in Action
                     </a>
@@ -365,7 +364,7 @@
                     </div>
                 </div>
 
-                <!-- Pro GUI Version -->
+                <!-- BETA GUI Version -->
                 <div class="feature-card rounded-2xl p-8">
                     <div class="text-center">
                         <div class="flex justify-center mb-4">
@@ -374,9 +373,9 @@
                                 <path d="M17.05 20.28c-.98.95-2.05.88-3.08.41-1.09-.47-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.41C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.19 2.31-.89 3.51-.84 1.54.07 2.7.61 3.44 1.57-3.14 1.88-2.29 5.13.22 6.41-.65 1.29-1.52 2.58-2.25 4.03zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
                             </svg>
                         </div>
-                        <h3 class="text-2xl font-bold mb-4">Reframer Pro</h3>
-                        <div class="text-5xl font-bold mb-6">£4</div>
-                        <p class="text-sm text-gray-400 mb-4">For MacOS 12.0 or later</p>
+                        <h3 class="text-2xl font-bold mb-4">Reframer BETA</h3>
+                        <div class="text-5xl font-bold mb-6">Free</div>
+                        <p class="text-sm text-gray-400 mb-4">For MacOS 12.0 or later (Apple Silicon)</p>
                     </div>
                     <ul class="space-y-4 mb-8 text-lg">
                         <li class="flex items-center text-gray-300">
@@ -401,13 +400,13 @@
                             <svg class="w-6 h-6 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                             </svg>
-                            One-time payment
+                            BETA version - Free trial
                         </li>
                     </ul>
                     <div class="text-center">
-                        <button onclick="handlePurchase('reframer')" class="w-full bg-deepmind-blue text-deepmind-dark px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-400 transition-colors">
-                            Buy Now
-                        </button>
+                        <a href="https://londonparkour.synology.me:5443/1_reframer/v1.0.0_RC1/Reframe-1.0.0-RC1-arm64.dmg" target="_blank" class="w-full bg-deepmind-blue text-deepmind-dark px-8 py-4 rounded-full text-lg font-semibold hover:bg-blue-400 transition-colors inline-block">
+                            Download BETA
+                        </a>
                     </div>
                 </div>
             </div>
@@ -634,12 +633,7 @@
             });
         });
 
-        // Stripe integration
-        async function handlePurchase(productId) {
-            // Redirect to the Stripe payment link with success URL
-            const successUrl = encodeURIComponent(window.location.origin + '/thank-you.html');
-            window.location.href = `https://buy.stripe.com/14AfZhc2I66F9oS0Rx9oc04?success_url=${successUrl}`;
-        }
+
     </script>
 </body>
 </html>

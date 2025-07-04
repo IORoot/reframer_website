@@ -84,9 +84,9 @@
                         <a href="index.html#showcase" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Showcase</a>
                         <a href="changelog.html" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Changelog</a>
                         <a href="index.html#pricing" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Pricing</a>
-                        <button onclick="handlePurchase('reframer')" class="bg-deepmind-blue text-deepmind-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-400 transition-colors">
-                            Buy Now
-                        </button>
+                        <a href="https://londonparkour.synology.me:5443/1_reframer/v1.0.0_RC1/Reframe-1.0.0-RC1-arm64.dmg" target="_blank" class="bg-deepmind-blue text-deepmind-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-400 transition-colors">
+                            Download BETA
+                        </a>
                     </div>
                 </div>
             </div>
@@ -205,12 +205,6 @@
         </div>
     </footer>
 
-    <!-- Custom JavaScript -->
-    <script>
-        async function handlePurchase(productId) {
-            const successUrl = encodeURIComponent(window.location.origin + '/thank-you.html');
-            window.location.href = `https://buy.stripe.com/14AfZhc2I66F9oS0Rx9oc04?success_url=${successUrl}`;
-        }
-    </script>
+
 </body>
 </html> 
