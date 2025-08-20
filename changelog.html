@@ -79,13 +79,11 @@
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-center space-x-8">
-                        <a href="index.html#features" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Features</a>
-                        <a href="index.html#use-cases" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Use Cases</a>
-                        <a href="index.html#showcase" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Showcase</a>
-                        <a href="changelog.html" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Changelog</a>
-                        <a href="index.html#pricing" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Pricing</a>
-                        <a href="https://londonparkour.synology.me:5443/1_reframer/v1.0.0_RC1/Reframe-1.0.0-RC1-arm64.dmg" target="_blank" class="bg-deepmind-blue text-deepmind-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-400 transition-colors">
-                            Download BETA
+                        <a href="index.html" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">Home</a>
+                        <a href="https://github.com/IORoot/reframer_gui" target="_blank" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">GitHub</a>
+                        <a href="https://github.com/IORoot/reframer_cli" target="_blank" class="nav-link text-deepmind-text hover:text-white px-3 py-2 text-sm font-medium">CLI</a>
+                        <a href="#" target="_blank" class="bg-deepmind-blue text-deepmind-dark px-6 py-2 rounded-full text-sm font-medium hover:bg-blue-400 transition-colors">
+                            Loading...
                         </a>
                     </div>
                 </div>
@@ -97,78 +95,21 @@
     <div class="pt-24 pb-16">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h1 class="section-title font-bold text-center mb-16">Changelog</h1>
-
-            <!-- Version 1.0.0 -->
-            <div class="changelog-card rounded-xl p-8 mb-8">
-                <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-2xl font-bold version-tag">v1.0.0</h2>
-                    <span class="text-gray-400">May 2025</span>
+            
+            <!-- Loading state -->
+            <div class="text-center py-8">
+                <div class="inline-flex items-center px-4 py-2 bg-deepmind-gray rounded-lg">
+                    <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-deepmind-blue" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                    </svg>
+                    Loading releases...
                 </div>
-                
-                <div class="space-y-6">
-                    <div>
-                        <h3 class="text-xl font-semibold mb-3">✨ Initial Release</h3>
-                        <p class="text-gray-400 mb-4">The first public release of Reframer, bringing AI-powered video reframing to macOS.</p>
-                        
-                        <h4 class="text-lg font-medium mb-2">Key Features</h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                AI-powered subject detection and tracking
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Support for multiple aspect ratios (16:9, 9:16, 1:1, custom)
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Batch processing capabilities
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                GPU-accelerated processing
-                            </li>
-                        </ul>
-                    </div>
+            </div>
 
-                    <div>
-                        <h4 class="text-lg font-medium mb-2">Technical Details</h4>
-                        <ul class="space-y-2 text-gray-400">
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                macOS 11.0 or later
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Support for Intel and Apple Silicon
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Input formats: MP4 (h264, h265), MOV
-                            </li>
-                            <li class="flex items-center">
-                                <svg class="w-5 h-5 mr-3 text-deepmind-blue" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
-                                </svg>
-                                Output formats: MP4, MOV
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <!-- Dynamic changelog content -->
+            <div class="changelog-container">
+                <!-- Content will be populated by JavaScript -->
             </div>
         </div>
     </div>
@@ -185,17 +126,14 @@
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
                     <ul class="space-y-2">
-                        <li><a href="index.html#features" class="text-gray-400 hover:text-white transition-colors">Features</a></li>
-                        <li><a href="index.html#use-cases" class="text-gray-400 hover:text-white transition-colors">Use Cases</a></li>
-                        <li><a href="index.html#showcase" class="text-gray-400 hover:text-white transition-colors">Showcase</a></li>
+                        <li><a href="index.html" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
                         <li><a href="changelog.html" class="text-gray-400 hover:text-white transition-colors">Changelog</a></li>
-                        <li><a href="index.html#pricing" class="text-gray-400 hover:text-white transition-colors">Pricing</a></li>
                     </ul>
                 </div>
                 <div>
                     <h4 class="text-lg font-semibold mb-4">Contact & Support</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="https://github.com/IORoot/reframer/issues" target="_blank" class="hover:text-white transition-colors">GitHub Issues</a></li>
+                        <li><a href="https://github.com/IORoot/reframer_gui/issues" target="_blank" class="hover:text-white transition-colors">GitHub Issues</a></li>
                     </ul>
                 </div>
             </div>
@@ -205,6 +143,16 @@
         </div>
     </footer>
 
+    <!-- GitHub Releases Integration -->
+    <script src="src/js/github-releases.js"></script>
+    
+    <script>
+        // Initialize GitHub releases integration
+        document.addEventListener('DOMContentLoaded', async () => {
+            const githubReleases = new GitHubReleases();
+            await githubReleases.init();
+        });
+    </script>
 
 </body>
 </html> 

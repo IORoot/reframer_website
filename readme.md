@@ -1,71 +1,111 @@
-![header](https://raw.githubusercontent.com/IORoot/reframer_website/refs/heads/master/header.jpg)
+# Reframer Website
 
-# Reframer Website Content
-
-## Header
-
-- Features  
-- Use Cases  
-- Showcase  
-- Specs  
-- Buy Now  
-
----
-
-## Hero Section
-
-### Transform Aspect Ratios with AI
-
-Reframer uses advanced AI to detect and follow the most important content in your videos, delivering intelligently reframed shots in your desired aspect ratio—automatically and effortlessly.
-
----
+A modern, responsive website for Reframer - an AI-powered video reframing application for macOS.
 
 ## Features
 
-### 1. AI-Powered Subject Detection  
-Reframer uses cutting-edge machine learning to automatically detect and track key subjects in your videos, ensuring that the most important elements always remain in frame.
+- **Dynamic GitHub Releases Integration**: Automatically fetches and displays the latest releases from the [reframer_gui repository](https://github.com/IORoot/reframer_gui)
+- **Real-time Updates**: Version numbers and download links automatically update when new releases are published
+- **Automatic Changelog**: Generates a complete changelog page from GitHub release notes
+- **Responsive Design**: Built with Tailwind CSS for all device sizes
+- **Modern Animations**: Smooth GSAP animations and transitions
 
-### 2. Intelligent Smart Framing  
-Maintain focus on people, objects, or movement while seamlessly converting to your target aspect ratio. Ideal for transforming footage across different platforms without losing context.
+## GitHub Releases Integration
 
-### 3. Efficient Batch Processing  
-Process multiple videos at once and save hours of manual editing time. Batch rendering preserves the original quality of your footage while applying smart cropping and tracking.
+The website automatically connects to the GitHub API to fetch releases from the `IORoot/reframer_gui` repository. This provides:
 
-### 4. Flexible Format Support  
-Reframer supports exporting to a variety of aspect ratios—16:9, 9:16, 1:1, and custom dimensions. Compatible with all major video formats and codecs for maximum versatility.
+### Automatic Updates
+- Version numbers in navigation and headers
+- Download links for the latest release
+- Complete changelog with all past releases
 
----
+### How It Works
+1. **API Integration**: Uses GitHub's public API to fetch release data
+2. **Smart Parsing**: Automatically parses release notes from markdown format
+3. **Dynamic Content**: Updates the website content without manual intervention
+4. **Error Handling**: Gracefully handles API failures and missing releases
 
-## Use Cases
+### Release Note Format
+The system automatically parses GitHub release notes that follow this format:
 
-### For Content Creators  
-- Convert horizontal (landscape) videos to vertical (portrait) for TikTok, Instagram Reels, or YouTube Shorts  
-- Generate platform-specific versions from a single source video  
-- Keep subjects centered and engaging throughout the clip  
+```markdown
+## ✨ New Features
+- Feature 1 description
+- Feature 2 description
 
-### For Businesses  
-- Repurpose existing video content for new channels or campaigns  
-- Standardize aspect ratios for branding consistency  
-- Highlight speakers or products in webinars, training materials, and presentations  
+## 🐛 Bug Fixes
+- Fixed issue 1
+- Fixed issue 2
 
----
+## 🔧 Technical Improvements
+- Performance improvements
+- Code refactoring
+```
 
-## Showcase: See Reframer in Action
+## File Structure
 
-### Watch Reframer Transform Your Videos  
-Experience how Reframer intelligently follows your content and adapts it to any aspect ratio—all in real time.
+```
+reframer_website/
+├── index.html              # Main landing page
+├── changelog.html          # Dynamic changelog page
+├── test.html              # Test page for GitHub integration
+├── src/
+│   ├── js/
+│   │   └── github-releases.js  # GitHub API integration
+│   ├── img/               # Website images
+│   └── svg/               # SVG assets
+└── README.md              # This file
+```
 
-📺 [Watch on YouTube](https://youtu.be/MPbL4X79Ls0)
+## Setup and Development
 
----
+### Local Development
+1. Clone the repository
+2. Open `index.html` in a web browser
+3. The GitHub integration will automatically fetch the latest releases
 
-## Simple, Transparent Pricing
+### Testing
+Use `test.html` to test the GitHub releases integration:
+- Test API calls
+- Verify data parsing
+- Check page element updates
 
-### Get Started for the Price of a Coffee  
-**£4**
+### Customization
+To connect to a different GitHub repository, modify the `GitHubReleases` class in `src/js/github-releases.js`:
 
-- Unlimited usage  
-- Access to all features from the current major version  
-- Full batch processing capabilities  
+```javascript
+constructor() {
+    this.repoOwner = 'YourUsername';
+    this.repoName = 'YourRepoName';
+    // ... rest of the code
+}
+```
 
-_No hidden fees. One-time payment. Yours to use._
+## Browser Compatibility
+
+- Modern browsers with ES6+ support
+- Requires JavaScript enabled
+- Responsive design works on all screen sizes
+
+## API Rate Limits
+
+GitHub's public API has rate limits:
+- **Unauthenticated**: 60 requests per hour
+- **Authenticated**: 5,000 requests per hour
+
+For high-traffic websites, consider:
+- Implementing caching
+- Using GitHub tokens for authenticated requests
+- Adding a CDN layer
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is open source and available under the [MIT License](LICENSE).
